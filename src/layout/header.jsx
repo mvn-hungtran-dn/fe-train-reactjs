@@ -4,22 +4,23 @@ import feLogo from '../images/fe-logo.png';
 export class Header extends React.Component {
   render() {
     return (
-      <header class="header nav">
-        <div class="logo">
+      <header className="header nav">
+        <div className="logo">
           <img
             src={feLogo}
+            alt="logo"
             width="80"
           />
         </div>
-        <ul class="menu">
-          <li class="menu-item">Menu1</li>
-          <li class="menu-item">Menu2</li>
-          <li class="menu-item">Menu3</li>
+        <ul className="menu">
+          <li className="menu-item">Menu1</li>
+          <li className="menu-item">Menu2</li>
+          <li className="menu-item">Menu3</li>
         </ul>
-        <ul class="menu menu-right">
-          <li class="menu-item">Search</li>
-          <li class="menu-item">Login</li>
-          <li class="menu-item">Logout</li>
+        <ul className="menu menu-right">
+          <li className="menu-item">Search</li>
+          <li className="menu-item">Login</li>
+          <li className="menu-item">Logout</li>
         </ul>
       </header>
     )
