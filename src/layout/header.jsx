@@ -8,6 +8,7 @@ export class Header extends React.Component {
         <div className="logo">
           <img
             src={feLogo}
+            alt="logo"
             width="80"
           />
         </div>
