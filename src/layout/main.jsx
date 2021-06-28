@@ -69,25 +69,27 @@ export class Main extends React.Component {
     ]
     return (
       <main className="main">
-        <h3>Registor</h3>
-        <Form handleSubmit={this.onSubmit}>
-          <Input value={this.state.email} label="Email" name="email"></Input>
-          <Input value={this.state.password} label="Password" name="password"></Input>
-          <Select
-            value={this.state.country}
-            label="Country"
-            name="country"
-            options={options}
-          ></Select>
-          <RadioGroup
-            value={this.state.gender}
-            label="Gender"
-            name="gender"
-            options={optionsRadio}
-          ></RadioGroup>
-          <Button>Submit</Button>
-        </Form>
-        <Table delete={this.onDelete} datas={this.state.datas}></Table>
+        <div className="container">
+          <h3>Registor</h3>
+          <Form handleSubmit={this.onSubmit}>
+            <Input value={this.state.email} label="Email" name="email"></Input>
+            <Input value={this.state.password} type="password" label="Password" name="password"></Input>
+            <Select
+              value={this.state.country}
+              label="Country"
+              name="country"
+              options={options}
+            ></Select>
+            <RadioGroup
+              value={this.state.gender}
+              label="Gender"
+              name="gender"
+              options={optionsRadio}
+            ></RadioGroup>
+            <Button>Submit</Button>
+          </Form>
+          <Table delete={this.onDelete} datas={this.state.datas}></Table>
+        </div>
       </main>
     )
   }

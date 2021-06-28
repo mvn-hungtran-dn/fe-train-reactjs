@@ -4,7 +4,7 @@ export class Table extends React.Component {
   render() {
     const { datas } = this.props
     return (
-      <table>
+      <table className="table">
         <thead>
           <tr>
             <th>Email</th>
@@ -17,11 +17,14 @@ export class Table extends React.Component {
           {
             datas.map((item, index) =>
               <tr key={index}>
-                <td>{item.email}</td>
+                <td>{item.email || '-'}</td>
                 <td>{item.country}</td>
-                <td>{item.gender}</td>
+                <td>{item.gender === 0 ? 'Male' : 'Female' || '-'}</td>
                 <td>
-                  <button onClick={() => this.props.delete(item.id)}>X</button>
+                  <button
+                    className="btn-delete"
+                    onClick={() => this.props.delete(item.id)}
+                  >Delete</button>
                 </td>
               </tr>
             )
