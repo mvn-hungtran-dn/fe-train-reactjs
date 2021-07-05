@@ -2,7 +2,8 @@ import React from "react";
 
 export class RadioGroup extends React.Component {
   render() {
-    const { options, name} = this.props
+    console.log(1)
+    const { options, name, value} = this.props
     return (
       <div className="radio-group input-group">
         {
@@ -13,6 +14,7 @@ export class RadioGroup extends React.Component {
                 id={index}
                 type="radio"
                 name={name}
+                defaultChecked={value === item.value}
               />
               <label htmlFor={index}>{item.name}</label>
             </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "../component/form/button";
 import { Form } from "../component/form/form";
 import { Input } from "../component/form/input";
@@ -6,22 +6,22 @@ import { RadioGroup } from "../component/form/radio-group";
 import { Select } from "../component/form/select";
 import { Table } from "../component/table";
 
-export class Main extends React.Component {
-  constructor() {
-    super()
-    this.state = {
+export function Main() {
+  const [state, setState] = useState(
+    {
       email: '',
       country: '',
       password: '',
-      gender: '',
+      gender: 0,
       datas: []
     }
-  }
+  )
 
-  onSubmit = (event) => {
+  function onSubmit(event) {
     event.preventDefault()
     const target = event.target
-    this.setState((state) => ({
+
+    setState((state) => ({
       datas: [
         ...state.datas,
         {
@@ -31,18 +31,21 @@ export class Main extends React.Component {
           password: target.password.value,
           gender: target.gender.value
         }
-      ]
+      ],
+      email: '',
+      country: '',
+      password: '',
+      gender: '',
     }))
-    console.log(target.gender)
   }
 
-  onDelete = (id) => {
-    this.setState((state) => ({
+  function onDelete(id) {
+    setState((state) => ({
       datas: state.datas.filter((item) => item.id !== id)
     }))
   }
 
-  render() {
+  // function render() {
     const options = [
       {
         value: 'jp',
@@ -71,26 +74,26 @@ export class Main extends React.Component {
       <main className="main">
         <div className="container">
           <h3>Registor</h3>
-          <Form handleSubmit={this.onSubmit}>
-            <Input value={this.state.email} label="Email" name="email"></Input>
-            <Input value={this.state.password} type="password" label="Password" name="password"></Input>
+          <Form handleSubmit={onSubmit}>
+            <Input value={state.email} label="Email" name="email"></Input>
+            <Input value={state.password} type="password" label="Password" name="password"></Input>
             <Select
-              value={this.state.country}
+              value={state.country}
               label="Country"
               name="country"
               options={options}
             ></Select>
             <RadioGroup
-              value={this.state.gender}
+              value={state.gender}
               label="Gender"
               name="gender"
               options={optionsRadio}
             ></RadioGroup>
             <Button>Submit</Button>
           </Form>
-          <Table delete={this.onDelete} datas={this.state.datas}></Table>
+          <Table delete={onDelete} datas={state.datas}></Table>
         </div>
       </main>
     )
-  }
+  // }
 }
