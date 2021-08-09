@@ -1,13 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { AiOutlineHeart } from 'react-icons/ai';
 
 export function Card (props) {
-  
-
-  useEffect (() => {
-    console.log(props.data.stats)
-  })
-
   return (
     <div className={`card card__${props.data.type}`}>
       <div className="card-img">

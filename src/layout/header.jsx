@@ -1,6 +1,10 @@
 import React from "react";
 import logo from '../images/logo-poke.png';
 import { AiOutlineHeart } from 'react-icons/ai';
+import {
+  BrowserRouter as Router,
+  Link,
+} from "react-router-dom";
 
 export class Header extends React.Component {
   render() {
@@ -14,9 +18,11 @@ export class Header extends React.Component {
         </div>
         <ul className="menu menu-right">
           <li className="menu-item">
-            <AiOutlineHeart />
+            <AiOutlineHeart className="icon" />
           </li>
-          <li className="menu-item">Login</li>
+          <li className="menu-item login">
+            <Link to="/login">Login</Link>
+          </li>
         </ul>
       </header>
     )

@@ -48,6 +48,7 @@ table {
 }
 
 @import "~bootstrap/scss/bootstrap";
+@import "./styles/loading.scss";
 
 .nav {
   display: flex;
@@ -59,11 +60,27 @@ table {
 }
 
 .menu-item {
-  padding: 20px 40px;
+  padding: 5px 8px;
+  &.login {
+    cursor: pointer;
+    background: #fdcc00;
+    border-radius: 10px;
+  }
+}
+
+.header {
+  padding-top: 10px;
 }
 
 .menu-right {
   margin-left: auto;
+  cursor: pointer;
+  .menu-item {
+    margin-left: 20px;
+  }
+  .icon {
+    font-size: 25px;
+  }
 }
 
 .logo {
@@ -219,5 +236,19 @@ table {
   }
   &__fairy {
     background-color: #D685AD;
+  }
+}
+
+.page-login {
+  .form {
+    padding-top: 100px;
+    width: 300px;
+  }
+  .input {
+    padding: 5px;
+  }
+  .button {
+    border: 0;
+    padding: 3px 5px;
   }
 }
