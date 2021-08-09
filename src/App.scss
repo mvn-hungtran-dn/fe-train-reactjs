@@ -1,0 +1,223 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+@import "~bootstrap/scss/bootstrap";
+
+.nav {
+  display: flex;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+}
+
+.menu-item {
+  padding: 20px 40px;
+}
+
+.menu-right {
+  margin-left: auto;
+}
+
+.logo {
+  width: 40px;
+  display: flex;
+  align-items: center;
+  animation: rotate 4s infinite;
+  img {
+    width: 100%;
+  }
+}
+
+@keyframes rotate {
+  0%   {transform: rotate(0)}
+  80%  {transform: rotate(360deg)}
+  90%  {transform: rotate(350deg)}
+  100%  {transform: rotate(360deg)}
+}
+
+.main {
+  .banner {
+    width: 300px;
+    margin: 0 auto;
+    padding: 30px 0;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.card {
+  padding-top: 10px;
+  height: 250px;
+  border: 0;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border-radius: 10px;
+  text-align: center;
+  transform-style: preserve-3d;
+  position: relative;
+  &:hover {
+    img {
+      transform: scale(1.3);
+    }
+    .icon-hear {
+      visibility: visible;
+    }
+    .card-img:after {
+      bottom: 0;
+    }
+  }
+  &-info {
+    &--id {
+      padding: 3px 10px;
+      font-size: 12px;
+      border-radius: 12px;
+      font-weight: bold;
+      background: #928e8e3d;
+    }
+    &--name {
+      &:first-letter {
+        text-transform: uppercase;
+      }
+    }
+  }
+  &-img {
+    margin: 0 auto;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    &:after {
+      content: '';
+      transition: all 0.5s ease;
+      position: absolute;
+      bottom: -40px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 40px;
+      background-color: #1919197a;
+    }
+    .icon-hear {
+      position: absolute;
+      bottom: 10px;
+      color: white;
+      left: 50%;
+      font-size: 20px;
+      z-index: 2;
+      transform: translateX(-50%);
+      visibility: hidden;
+    }
+    img {
+      transition: all 0.5s ease;
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: solid 2px #fdfdfd;
+    }
+  }
+  &__grass {
+    background-color: #cfecbd;
+  }
+  &__fire {
+    background-color: #efae7d;
+  }
+  &__water {
+    background-color: #becff3;
+  }
+  &__electric {
+    background-color: #f1d562;
+  }
+  &__normal {
+    background-color: #dad99e;
+  }
+  &__ice {
+    background-color: #96D9D6;
+  }
+  &__fighting {
+    background-color: #f7bbb9;
+  }
+  &__poison {
+    background-color: #dec6de;
+  }
+  &__ground {
+    background-color: #E2BF65;
+  }
+  &__flying {
+    background-color: #A98FF3;
+  }
+  &__psychic {
+    background-color: #c6b9ea;
+  }
+  &__bug {
+    background-color: #cbd67c;
+  }
+  &__rock {
+    background-color: #B6A136;
+  }
+  &__ghost {
+    background-color: #735797;
+  }
+  &__dragon {
+    background-color: #6F35FC;
+  }
+  &__dark {
+    background-color: #705746;
+  }
+  &__steel {
+    background-color: #B7B7CE;
+  }
+  &__fairy {
+    background-color: #D685AD;
+  }
+}

@@ -1,25 +1,22 @@
 import React from "react";
-import feLogo from '../images/fe-logo.png';
+import logo from '../images/logo-poke.png';
+import { AiOutlineHeart } from 'react-icons/ai';
 
 export class Header extends React.Component {
   render() {
     return (
-      <header className="header nav">
+      <header className="header nav container">
         <div className="logo">
           <img
-            src={feLogo}
+            src={logo}
             width="80"
           />
         </div>
-        <ul className="menu">
-          <li className="menu-item">Menu1</li>
-          <li className="menu-item">Menu2</li>
-          <li className="menu-item">Menu3</li>
-        </ul>
         <ul className="menu menu-right">
-          <li className="menu-item">Search</li>
+          <li className="menu-item">
+            <AiOutlineHeart />
+          </li>
           <li className="menu-item">Login</li>
-          <li className="menu-item">Logout</li>
         </ul>
       </header>
     )
