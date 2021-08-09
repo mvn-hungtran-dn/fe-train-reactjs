@@ -61,10 +61,25 @@ table {
 
 .menu-item {
   padding: 5px 8px;
+  position: relative;
   &.login {
     cursor: pointer;
     background: #fdcc00;
     border-radius: 10px;
+  }
+  .fav-count {
+    content: '';
+    position: absolute;
+    padding: 2px 8px;
+    border-radius: 50%;
+    top: 0;
+    left: 20px;
+    background-color: red;
+    color: white;
+    font-size: 13px;
+  }
+  &.shake {
+    animation: shakeCart .4s ease-in-out forwards;
   }
 }
 
@@ -98,6 +113,21 @@ table {
   80%  {transform: rotate(360deg)}
   90%  {transform: rotate(350deg)}
   100%  {transform: rotate(360deg)}
+}
+
+@keyframes shakeCart {
+  25% {
+    transform: translateX(6px)
+  }
+  50% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .main {

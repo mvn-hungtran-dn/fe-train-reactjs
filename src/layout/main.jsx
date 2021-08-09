@@ -36,13 +36,11 @@ export function Main () {
   }
 
   function addFavorite (id) {
-    console.log(id);
     if (favorites.includes(id)) {
       dispatch(removeFav(id))
     } else {
       dispatch(addFav(id))
     }
-    console.log(favorites)
   }
 
   return (
