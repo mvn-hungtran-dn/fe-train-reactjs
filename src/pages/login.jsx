@@ -13,7 +13,7 @@ export function Login () {
 
     window.dispatchEvent(start)
     setTimeout(() => {
-      if (password === 'anhyeumem123' && userName === 'hung') {
+      if (password === 'anhyeuem123' && userName === 'hung') {
         localStorage.setItem('token', new Date().getTime())
         history.push('/')
       }

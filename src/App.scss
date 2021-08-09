@@ -173,6 +173,9 @@ table {
       z-index: 2;
       transform: translateX(-50%);
       visibility: hidden;
+      &.fav {
+        color: #f95757;
+      }
     }
     img {
       transition: all 0.5s ease;

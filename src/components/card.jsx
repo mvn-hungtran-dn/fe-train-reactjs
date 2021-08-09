@@ -1,12 +1,22 @@
 import React from 'react';
-import { AiOutlineHeart } from 'react-icons/ai';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 
 export function Card (props) {
   return (
     <div className={`card card__${props.data.type}`}>
       <div className="card-img">
         <img src={props.data.image} alt="poke-image"/>
-        <AiOutlineHeart className="icon-hear" />
+        {
+          props.data.isFavorite ?
+          <AiFillHeart
+            onClick={() => props.addFavorite(props.data.id)}
+            className="icon-hear fav"
+          /> :
+          <AiOutlineHeart
+            onClick={() => props.addFavorite(props.data.id)}
+            className="icon-hear"
+          />
+        }
       </div>
       <div className="card-info">
         <span className="card-info--id mb-1">#{props.data.id}</span>
