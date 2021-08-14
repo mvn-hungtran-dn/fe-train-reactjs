@@ -1,8 +1,3 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -15,7 +10,7 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video, p {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -59,52 +54,50 @@ table {
   align-items: center;
 }
 
-.menu-item {
-  padding: 5px 8px;
-  position: relative;
-  &.login {
-    cursor: pointer;
-    background: #fdcc00;
-    border-radius: 10px;
-  }
-  .fav-count {
-    content: '';
-    position: absolute;
-    padding: 2px 8px;
-    border-radius: 50%;
-    top: 0;
-    left: 20px;
-    background-color: red;
-    color: white;
-    font-size: 13px;
-  }
-  &.shake {
-    animation: shakeCart .4s ease-in-out forwards;
-  }
-}
-
 .header {
   padding-top: 10px;
-}
-
-.menu-right {
-  margin-left: auto;
-  cursor: pointer;
-  .menu-item {
-    margin-left: 20px;
+  .menu-right {
+    margin-left: auto;
+    cursor: pointer;
+    p {
+      margin: 0;
+    }
+    .menu-item {
+      margin-left: 20px;
+      padding: 5px 8px;
+      position: relative;
+      &.login {
+        cursor: pointer;
+        background: #fdcc00;
+        border-radius: 10px;
+      }
+      .fav-count {
+        content: '';
+        position: absolute;
+        padding: 2px 8px;
+        border-radius: 50%;
+        top: 0;
+        left: 20px;
+        background-color: red;
+        color: white;
+        font-size: 13px;
+      }
+      &.shake {
+        animation: shakeCart .4s ease-in-out forwards;
+      }
+    }
+    .icon {
+      font-size: 25px;
+    }
   }
-  .icon {
-    font-size: 25px;
-  }
-}
-
-.logo {
-  width: 40px;
-  display: flex;
-  align-items: center;
-  animation: rotate 4s infinite;
-  img {
-    width: 100%;
+  .logo {
+    width: 40px;
+    display: flex;
+    align-items: center;
+    animation: rotate 4s infinite;
+    img {
+      width: 100%;
+    }
   }
 }
 

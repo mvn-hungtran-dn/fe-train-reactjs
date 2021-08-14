@@ -68,7 +68,8 @@ function App() {
     <>
       { isLoading ? <Loading /> : ''}
       <Router>
-        { isLogin ? <Header  /> : ''}
+      <Header  />
+        {/* { isLogin ? <Header  /> : ''} */}
         <Switch>
           {routes.map((route, i) => {
             if (route.protect) {
