@@ -26,11 +26,16 @@ export function Header () {
   }, [favorites])
 
   useEffect(() => {
-    console.log('?')
     if (location.pathname === '/login') {
       setShowHeader(false)
     } else {
       setShowHeader(true)
+    }
+
+    if (localStorage.getItem('token')) {
+      setLoginState(true)
+    } else {
+      setLoginState(false)
     }
   }, [location])
 
