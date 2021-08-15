@@ -321,6 +321,7 @@ table {
     background: white;
     img {
       position: absolute;
+      object-fit: contain;
       width: 100px;
       height: 100px;
       top: 50%;
@@ -372,5 +373,25 @@ table {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+.stat {
+  &-hp {
+    background-color: #54cd5b;
+  }
+  &-attack {
+    background-color: #f6de51;
+  }
+  &-defense {
+    background-color: #ed8010;
+  }
+  &-special-attack {
+    background-color: #55b0f1;
+  }
+  &-special-defense {
+    background-color: #ad62f6;
+  }
+  &-speed {
+    background-color: #f06ace;
   }
 }

@@ -23,13 +23,6 @@ export function Sidebar () {
     })
   }, [])
 
-  // useEffect(async () => {
-  //   const id = query.get('poke')
-  //   const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
-  //   console.log(result.data);
-  //   setPokemon(result.data)
-  // }, [location])
-
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
@@ -80,9 +73,9 @@ export function Sidebar () {
           {
             pokemon && pokemon.stats && pokemon.stats.map((stat, index) => {
               return (
-                <div key={index} className="progress">
+                <div key={index} className={`progress`}>
                   <div
-                    className="progress-bar bg-success"
+                    className={`progress-bar stat-${stat.stat.name}`}
                     role="progressbar"
                     style={{width: `${stat.base_stat}%`}}
                     aria-valuemin="0"

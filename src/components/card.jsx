@@ -9,11 +9,11 @@ export function Card (props) {
         {
           props.data.isFavorite ?
           <AiFillHeart
-            onClick={() => props.addFavorite(props.data.id)}
+            onClick={(e) => props.addFavorite(e, props.data.id)}
             className="icon-hear fav"
           /> :
           <AiOutlineHeart
-            onClick={() => props.addFavorite(props.data.id)}
+            onClick={(e) => props.addFavorite(e, props.data.id)}
             className="icon-hear"
           />
         }

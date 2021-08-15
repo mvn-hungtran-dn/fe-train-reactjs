@@ -35,7 +35,8 @@ export function Main () {
     return result.data
   }
 
-  function addFavorite (id) {
+  function addFavorite (e, id) {
+    e.stopPropagation()
     if (favorites.includes(id)) {
       dispatch(removeFav(id))
     } else {
