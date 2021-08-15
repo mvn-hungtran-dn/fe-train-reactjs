@@ -3,7 +3,7 @@ import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 
 export function Card (props) {
   return (
-    <div className={`card card__${props.data.type}`}>
+    <div onClick={() => props.openSideBar(props.data.id)} className={`card card__${props.data.type}`}>
       <div className="card-img">
         <img src={props.data.image} alt="poke-image"/>
         {

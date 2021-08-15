@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import  axios  from '../api/axios-config.js';
 import { useSelector, useDispatch } from 'react-redux'
 import { addFav, removeFav } from '../store/fav.js'
+import { useHistory } from "react-router-dom";
 
 import { Card } from '../components/card'
 import pokemon from '../images/pokemon-com.png';
@@ -10,6 +11,7 @@ export function Main () {
   const [ pokemons, setPokemon ] = useState([])
   let favorites = useSelector((state) => state.fav.favorites)
   const dispatch = useDispatch()
+  let history = useHistory();
 
   useEffect(() => {
     getPokemons()
@@ -43,6 +45,12 @@ export function Main () {
     }
   }
 
+  function openSideBar (id) {
+    const openSideBar = new Event('openSidebar')
+    history.push({pathname: '/', search: `?poke=${id}`})
+    window.dispatchEvent(openSideBar)
+  }
+
   return (
     <main className="main container">
       <div className="banner">
@@ -65,6 +73,7 @@ export function Main () {
                   stats: item.stats
                 }}
                 addFavorite={addFavorite}
+                openSideBar={openSideBar}
               />
             </div>
           )

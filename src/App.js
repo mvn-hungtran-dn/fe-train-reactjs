@@ -10,6 +10,7 @@ import { Main } from './layout/main';
 import { Login } from './pages/login'
 import { Loading } from './components/loading'
 import { useEffect, useState } from 'react';
+import { Sidebar } from './layout/sidebar';
 
 const routes = [
   {
@@ -17,15 +18,6 @@ const routes = [
     component: Main,
     exact: true
   },
-  // {
-  //   path: '/products',
-  //   component: Products,
-  //   exact: true,
-  // },
-  // {
-  //   path: "/products/:id",
-  //   component: Detail
-  // },
   {
     path: '/login',
     component: Login,
@@ -63,13 +55,12 @@ function App() {
     })
   })
 
-  const isLogin = localStorage.getItem('token')
   return (
     <>
-      { isLoading ? <Loading /> : ''}
+      { isLoading ? <Loading /> : '' }
       <Router>
-      <Header  />
-        {/* { isLogin ? <Header  /> : ''} */}
+        <Sidebar />
+        <Header />
         <Switch>
           {routes.map((route, i) => {
             if (route.protect) {

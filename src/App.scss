@@ -278,3 +278,76 @@ table {
     padding: 3px 5px;
   }
 }
+
+.sidebar-container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  transition: all;
+}
+.close {
+  transform: translateX(-100%);
+}
+.open {
+  transform: translateX(0);
+}
+.sidebar {
+  position: fixed;
+  z-index: 3;
+  width: 300px;
+  height: 100vh;
+  background: white;
+  overflow: hidden;
+  .image {
+    position: relative;
+    top: 20px;
+    width: 160px;
+    height: 160px;
+    margin: 0 auto;
+    border: solid 3px #fccc05;
+    border-radius: 50%;
+    background: white;
+    img {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .head {
+    background: #f7e393;
+    height: 260px;
+    width: 600px;
+    border-radius: 0 0 50% 50%;
+    position: relative;
+    left: -50%;
+    .name {
+      padding-top: 30px;
+    }
+  }
+  .info {
+    padding: 20px 20px 0;
+    .value {
+      padding-left: 10px;
+    }
+  }
+  .stats {
+    padding: 0 20px;
+    .progress {
+      height: 10px;
+      margin-bottom: 10px;
+    }
+  }
+}
+.back-drop {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  background: #58585882;
+  z-index: 1;
+}
