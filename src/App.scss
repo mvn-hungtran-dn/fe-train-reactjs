@@ -285,13 +285,22 @@ table {
   right: 0;
   top: 0;
   z-index: 2;
-  transition: all;
 }
 .close {
-  transform: translateX(-100%);
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .back-drop {
+    display: none;
+  }
 }
 .open {
-  transform: translateX(0);
+  .sidebar {
+    transform: translateX(0);
+  }
+  .back-drop {
+    opacity: 1;
+  }
 }
 .sidebar {
   position: fixed;
@@ -300,6 +309,7 @@ table {
   height: 100vh;
   background: white;
   overflow: hidden;
+  transition: all 0.5s ease;
   .image {
     position: relative;
     top: 20px;
@@ -350,4 +360,17 @@ table {
   top: 0;
   background: #58585882;
   z-index: 1;
+}
+
+.rotateImage {
+  animation: rotateImage .7s;
+}
+
+@keyframes rotateImage {
+  0% {
+    transform: rotate(0)
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

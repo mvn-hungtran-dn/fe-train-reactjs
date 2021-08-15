@@ -13,7 +13,9 @@ export function Sidebar () {
   const [ pokemon, setPokemon ] = useState({})
 
   useEffect(() => {
-    window.addEventListener('openSidebar', () => {
+    window.addEventListener('openSidebar', async (e) => {
+      const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${e.detail}`)
+      setPokemon(result.data)
       setState(true)
     })
     window.addEventListener('closeSidebar', () => {
@@ -21,12 +23,12 @@ export function Sidebar () {
     })
   }, [])
 
-  useEffect(async () => {
-    const id = query.get('poke')
-    const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
-    console.log(result.data);
-    setPokemon(result.data)
-  }, [location])
+  // useEffect(async () => {
+  //   const id = query.get('poke')
+  //   const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+  //   console.log(result.data);
+  //   setPokemon(result.data)
+  // }, [location])
 
   function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -40,7 +42,7 @@ export function Sidebar () {
     <div className={`sidebar-container ${sidebarState ? 'open' : 'close'}`}>
       <div className="sidebar">
         <div className="head">
-          <div className="image">
+          <div className={`image ${sidebarState ? 'rotateImage' : ''}`}>
             <img src={`https://img.pokemondb.net/artwork/large/${pokemon.name}.jpg`} alt="pokemon"/>
           </div>
           <p className="name fw-bold text-center">{ pokemon.name }</p>
