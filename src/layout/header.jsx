@@ -49,10 +49,12 @@ export function Header () {
     return (
       <header className="header nav container">
         <div className="logo">
-          <img
-            src={logo}
-            width="80"
-          />
+          <a href="/">
+            <img
+              src={logo}
+              width="80"
+            />
+          </a>
         </div>
         <ul className="menu menu-right">
           <li className={`menu-item ${isShake ? 'shake' : ''}`}>
