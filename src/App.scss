@@ -66,6 +66,10 @@ table {
       margin-left: 20px;
       padding: 5px 8px;
       position: relative;
+      a {
+        text-decoration: none;
+        color: black;
+      }
       &.login {
         cursor: pointer;
         background: #fdcc00;
@@ -398,7 +402,7 @@ table {
 
 .pagination {
   width: 300px;
-  margin: 20px auto;
+  margin: 10px auto 30px;
   .item {
     padding: 10px 18px;
     border: solid 1px;
@@ -414,4 +418,15 @@ table {
 
 .container {
   max-width: 800px !important;
+}
+
+.ReactModalPortal {
+  padding: 0;
+  img {
+    width: 100%;
+  }
+  button {
+    width: 300px;
+    margin-top: 25px;
+  }
 }

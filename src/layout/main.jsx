@@ -26,7 +26,6 @@ export function Main () {
     const finishLoading = new Event('loadingFinish')
 
     const length = stop - start + 1
-    console.log(length)
   
     window.dispatchEvent(startLoading)
     return Promise.all(
@@ -46,11 +45,20 @@ export function Main () {
 
   function addFavorite (e, id) {
     e.stopPropagation()
+    if (!localStorage.getItem('token')) {
+      openModal()
+      return
+    }
     if (favorites.includes(id)) {
       dispatch(removeFav(id))
     } else {
       dispatch(addFav(id))
     }
+  }
+
+  function openModal () {
+    const openModal = new Event('openModal')
+    window.dispatchEvent(openModal)
   }
 
   async function changePage (newPage) {
@@ -95,15 +103,19 @@ export function Main () {
         })
       }
       </div>
-      <Pagination
-        changePage={changePage}
-        data={{
-          total,
-          perPage,
-          current
-        }}
-        className="my-3"
-      />
+      {
+        pokemons.length ? 
+        <Pagination
+          changePage={changePage}
+          data={{
+            total,
+            perPage,
+            current
+          }}
+          className="my-3"
+        /> :
+        ''
+      }
     </main>
   )
 }

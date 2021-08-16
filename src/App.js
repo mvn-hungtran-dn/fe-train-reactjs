@@ -11,6 +11,7 @@ import { Login } from './pages/login'
 import { Loading } from './components/loading'
 import { useEffect, useState } from 'react';
 import { Sidebar } from './layout/sidebar';
+import { ModalCommon } from './components/modal'
 
 const routes = [
   {
@@ -59,6 +60,7 @@ function App() {
     <>
       { isLoading ? <Loading /> : '' }
       <Router>
+        <ModalCommon />
         <Sidebar />
         <Header />
         <Switch>
