@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import  axios  from '../api/axios-config.js';
-import {
-  BrowserRouter as Router,
-  useLocation,
-} from "react-router-dom";
 
 export function Sidebar () {
-  let location = useLocation()
-  let query = useQuery()
-
   const [ sidebarState, setState ] = useState()
   const [ pokemon, setPokemon ] = useState({})
 
@@ -22,10 +15,6 @@ export function Sidebar () {
       setState(false)
     })
   }, [])
-
-  function useQuery() {
-    return new URLSearchParams(useLocation().search);
-  }
 
   function closeSideBar () {
     setState(false)

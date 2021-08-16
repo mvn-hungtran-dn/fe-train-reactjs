@@ -1,32 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import  axios  from '../api/axios-config.js';
 import { useSelector, useDispatch } from 'react-redux'
-import { addFav, removeFav } from '../store/fav.js'
 
+import { addFav, removeFav } from '../store/fav.js'
 import { Card } from '../components/card'
 import pokemon from '../images/pokemon-com.png';
+import { Pagination } from '../components/pagination';
 
 export function Main () {
   const [ pokemons, setPokemon ] = useState([])
+  const [ current, setCurrent ] = useState(1)
+
   let favorites = useSelector((state) => state.fav.favorites)
   const dispatch = useDispatch()
 
+  const total = 100
+  const perPage = 20
+
   useEffect(() => {
-    getPokemons()
+    getPokemons(current, perPage)
   }, [])
 
-  function getPokemons () {
-    const start = new Event('loadingStart')
-    const finish = new Event('loadingFinish')
+  function getPokemons (start, stop) {
+    const startLoading = new Event('loadingStart')
+    const finishLoading = new Event('loadingFinish')
 
-    window.dispatchEvent(start)
-    Promise.all(
-      Array.from({length: 20}, (v, i) => 
-        getPokemonColor(`https://pokeapi.co/api/v2/pokemon/${i+1}`)
+    const length = stop - start + 1
+    console.log(length)
+  
+    window.dispatchEvent(startLoading)
+    return Promise.all(
+      Array.from({length}, (_v, i) => 
+        getPokemonColor(`https://pokeapi.co/api/v2/pokemon/${start + i}`)
       )
     ).then((res) => {
       setPokemon(res)
-      window.dispatchEvent(finish)
+      window.dispatchEvent(finishLoading)
     })
   }
 
@@ -44,6 +53,14 @@ export function Main () {
     }
   }
 
+  async function changePage (newPage) {
+    setCurrent(newPage)
+    const start = perPage * (newPage - 1) + 1
+    const stop = perPage * (newPage - 1) + perPage
+    await getPokemons(start, stop)
+    window.scrollTo({ top: 0, behavior: 'smooth'})
+  }
+
   function openSideBar (id) {
     const openSideBar = new CustomEvent('openSidebar', {'detail': id})
     window.dispatchEvent(openSideBar)
@@ -58,7 +75,7 @@ export function Main () {
       {
         pokemons.map((item, index) => {
           return (
-            <div key={index} className="col-3 col-lg-2 pb-4">
+            <div key={index} className="col-3 pb-4">
               <Card
                 key={index}
                 data={{
@@ -78,6 +95,15 @@ export function Main () {
         })
       }
       </div>
+      <Pagination
+        changePage={changePage}
+        data={{
+          total,
+          perPage,
+          current
+        }}
+        className="my-3"
+      />
     </main>
   )
 }
