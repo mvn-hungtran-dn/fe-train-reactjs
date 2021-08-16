@@ -145,7 +145,6 @@ table {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   border-radius: 10px;
   text-align: center;
-  transform-style: preserve-3d;
   position: relative;
   &:hover {
     img {
@@ -342,6 +341,9 @@ table {
     left: -50%;
     .name {
       padding-top: 30px;
+      &:first-letter {
+        text-transform: uppercase;
+      }
     }
   }
   .info {
@@ -428,5 +430,46 @@ table {
   button {
     width: 300px;
     margin-top: 25px;
+  }
+}
+
+.page-fav {
+  ul {
+    padding: 0;
+  }
+  .list-fav {
+    margin-top: 100px;
+    .item-fav {
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin-bottom: 50px;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    }
+    img {
+      position: absolute;
+      left: 0px;
+      top: -30px;
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+    }
+    .name {
+      padding-left: 80px;
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 0;
+      &:first-letter {
+        text-transform: uppercase;
+      }
+    }
+    .icon {
+      margin-left: auto;
+      font-size: 25px;
+      cursor: pointer;
+    }
   }
 }

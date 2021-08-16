@@ -56,8 +56,10 @@ export function Header () {
         </div>
         <ul className="menu menu-right">
           <li className={`menu-item ${isShake ? 'shake' : ''}`}>
-            <AiOutlineHeart className="icon" />
-            { favorites.length ? <p className="fav-count">{favorites.length}</p> : '' }
+            <Link to="/favorite">
+              <AiOutlineHeart className="icon" />
+              { favorites.length ? <p className="fav-count">{favorites.length}</p> : '' }
+            </Link>
           </li>
           <li className="menu-item login">
             {

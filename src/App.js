@@ -6,12 +6,13 @@ import {
   Redirect,
 } from "react-router-dom";
 import { Header } from './layout/header';
-import { Main } from './layout/main';
-import { Login } from './pages/login'
 import { Loading } from './components/loading'
 import { useEffect, useState } from 'react';
 import { Sidebar } from './layout/sidebar';
 import { ModalCommon } from './components/modal'
+import { Main } from './layout/main';
+import { Login } from './pages/login'
+import { Fav } from './pages/fav'
 
 const routes = [
   {
@@ -22,6 +23,11 @@ const routes = [
   {
     path: '/login',
     component: Login,
+  },
+  {
+    path: '/favorite',
+    component: Fav,
+    protect: true
   }
 ]
 
@@ -29,7 +35,7 @@ function PrivateRoute({ children }) {
   return (
     <Route
       render={({ location }) =>
-        !!localStorage.getItem('userName') ? (
+        !!localStorage.getItem('token') ? (
           children
         ) : (
           <Redirect
