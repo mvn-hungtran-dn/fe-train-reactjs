@@ -10,10 +10,10 @@ export function Fav () {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    getPokemon()
+    getPokemons()
   }, [])
 
-  function getPokemon () {
+  function getPokemons () {
     const startLoading = new Event('loadingStart')
     const finishLoading = new Event('loadingFinish')
     window.dispatchEvent(startLoading)

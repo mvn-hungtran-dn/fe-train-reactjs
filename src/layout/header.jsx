@@ -4,7 +4,6 @@ import logo from '../images/logo-poke.png';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { useSelector } from 'react-redux'
 import {
-  BrowserRouter as Router,
   Link,
   useLocation
 } from "react-router-dom";
@@ -53,6 +52,7 @@ export function Header () {
             <img
               src={logo}
               width="80"
+              alt="picture"
             />
           </a>
         </div>
