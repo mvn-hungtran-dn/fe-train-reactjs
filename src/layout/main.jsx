@@ -18,8 +18,11 @@ export function Main () {
   const perPage = 20
 
   useEffect(() => {
-    getPokemons(current, perPage)
-  }, [])
+    const start = perPage * (current - 1) + 1
+    const stop = perPage * (current - 1) + perPage
+    getPokemons(start, stop)
+    // eslint-disable-next-line
+  }, [current])
 
   function getPokemons (start, stop) {
     const startLoading = new Event('loadingStart')
@@ -35,6 +38,7 @@ export function Main () {
     ).then((res) => {
       setPokemon(res)
       window.dispatchEvent(finishLoading)
+      window.scrollTo({ top: 0, behavior: 'smooth'})
     })
   }
 
@@ -63,10 +67,6 @@ export function Main () {
 
   async function changePage (newPage) {
     setCurrent(newPage)
-    const start = perPage * (newPage - 1) + 1
-    const stop = perPage * (newPage - 1) + perPage
-    await getPokemons(start, stop)
-    window.scrollTo({ top: 0, behavior: 'smooth'})
   }
 
   function openSideBar (id) {

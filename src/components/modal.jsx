@@ -8,7 +8,6 @@ import spyduck from '../images/spyduck.gif';
 Modal.setAppElement('#root');
 
 export function ModalCommon () {
-  let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
   let history = useHistory();
 

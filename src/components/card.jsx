@@ -5,7 +5,7 @@ export function Card (props) {
   return (
     <div onClick={() => props.openSideBar(props.data.id)} className={`card card__${props.data.type}`}>
       <div className="card-img">
-        <img src={props.data.image} alt="poke-image"/>
+        <img src={props.data.image} alt="poke"/>
         {
           props.data.isFavorite ?
           <AiFillHeart

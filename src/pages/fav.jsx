@@ -11,14 +11,16 @@ export function Fav () {
 
   useEffect(() => {
     getPokemon()
+    // eslint-disable-next-line
   }, [])
 
   function getPokemon () {
     const startLoading = new Event('loadingStart')
     const finishLoading = new Event('loadingFinish')
     window.dispatchEvent(startLoading)
+    // eslint-disable-next-line
     return Promise.all(
-      favorites.map((id) => 
+      favorites.map((id) =>
         handApi(`https://pokeapi.co/api/v2/pokemon/${id}`)
       )
     ) .then((res) => {
