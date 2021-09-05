@@ -20,7 +20,6 @@ export function Home () {
   const perPage = 20
 
   useEffect(() => {
-    console.log(firebaseConfig)
     const start = perPage * (current - 1) + 1
     const stop = perPage * (current - 1) + perPage
     getPokemons(start, stop)

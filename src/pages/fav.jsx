@@ -10,7 +10,6 @@ export function Fav () {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    console.log(favorites);
     function getPokemon () {
       return Promise.all(
         favorites.map((id) =>
