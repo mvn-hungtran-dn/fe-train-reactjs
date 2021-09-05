@@ -4,8 +4,8 @@ export function loading () {
   const startLoading = new Event(LOADING.start)
   const finishLoading = new Event(LOADING.finish)
 
-  function start () { window.dispatchEvent(startLoading) }
-  function finish () { window.dispatchEvent(finishLoading) }
+  function start () { document.dispatchEvent(startLoading) }
+  function finish () { document.dispatchEvent(finishLoading) }
 
   return {
     start,

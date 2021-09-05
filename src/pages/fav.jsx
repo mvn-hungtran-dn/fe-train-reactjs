@@ -9,26 +9,19 @@ export function Fav () {
   const [ pokemons, setPokemon ] = useState([])
   const dispatch = useDispatch()
 
-  const startLoading = new Event('loadingStart')
-  const finishLoading = new Event('loadingFinish')
-
   useEffect(() => {
+    console.log(favorites);
+    function getPokemon () {
+      return Promise.all(
+        favorites.map((id) =>
+          handApi(`https://pokeapi.co/api/v2/pokemon/${id}`)
+        )
+      ).then((res) => {
+        setPokemon(res)
+      })
+    }
     getPokemon()
-    // eslint-disable-next-line
   }, [favorites])
-
-  function getPokemon () {
-    window.dispatchEvent(startLoading)
-    // eslint-disable-next-line
-    return Promise.all(
-      favorites.map((id) =>
-        handApi(`https://pokeapi.co/api/v2/pokemon/${id}`)
-      )
-    ) .then((res) => {
-      setPokemon(res)
-      window.dispatchEvent(finishLoading)
-    })
-  }
 
   async function handApi (url) {
     const result = await axios.get(url)

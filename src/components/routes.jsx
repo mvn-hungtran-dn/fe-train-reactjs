@@ -1,12 +1,11 @@
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
 import { Fav } from "../pages/fav";
 import { Login } from "../pages/login";
-import { Home } from "./home";
+import { Home } from "../pages/home";
 
 export function Routes () {
   const routes = [

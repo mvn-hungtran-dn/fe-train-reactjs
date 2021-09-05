@@ -12,6 +12,7 @@ import { setFav } from "../store/fav";
 
 export function Header () {
   let location = useLocation()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   let favorites = useSelector((state) => state.fav.favorites) || []
   const auth = getAuth()
 
@@ -32,6 +33,7 @@ export function Header () {
 
   useEffect(() => {
     getFav()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -46,6 +48,7 @@ export function Header () {
     } else {
       setLoginState(false)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location])
 
   function getFav () {
@@ -57,6 +60,8 @@ export function Header () {
   function logout () {
     signOut(auth)
     localStorage.removeItem('token')
+    localStorage.removeItem('userId')
+    dispatch(setFav())
     setLoginState(false)
   }
 

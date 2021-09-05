@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import  axios  from '../api/axios-config.js';
 import { useSelector, useDispatch } from 'react-redux'
 
-import { Card } from './card'
+import { Card } from '../components/card'
 import pokemon from '../images/pokemon-com.png';
-import { Pagination } from './pagination'
+import { Pagination } from '../components/pagination'
 import { addFav, removeFav } from '../store/fav.js';
 import { loading } from '../utils/functions.js';
 
@@ -22,6 +22,7 @@ export function Home () {
     const start = perPage * (current - 1) + 1
     const stop = perPage * (current - 1) + perPage
     getPokemons(start, stop)
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [current])
 
   function getPokemons (start, stop) {
