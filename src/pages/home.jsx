@@ -7,6 +7,7 @@ import pokemon from '../images/pokemon-com.png';
 import { Pagination } from '../components/pagination'
 import { addFav, removeFav } from '../store/fav.js';
 import { loading } from '../utils/functions.js';
+import firebaseConfig from '../utils/firebase.js';
 
 export function Home () {
   const [ pokemons, setPokemon ] = useState([])
@@ -19,6 +20,7 @@ export function Home () {
   const perPage = 20
 
   useEffect(() => {
+    console.log(firebaseConfig)
     const start = perPage * (current - 1) + 1
     const stop = perPage * (current - 1) + perPage
     getPokemons(start, stop)
