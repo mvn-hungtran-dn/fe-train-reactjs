@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react';
 import  axios  from '../api/axios-config.js';
 import { useSelector, useDispatch } from 'react-redux'
 
-import { addFav, removeFav } from '../store/fav.js'
-import { Card } from '../components/card'
+import { Card } from './card'
 import pokemon from '../images/pokemon-com.png';
-import { Pagination } from '../components/pagination';
+import { Pagination } from './pagination'
+import { addFav, removeFav } from '../store/fav.js';
+import { loading } from '../utils/functions.js';
 
-export function Main () {
+export function Home () {
   const [ pokemons, setPokemon ] = useState([])
   const [ current, setCurrent ] = useState(1)
 
-  let favorites = useSelector((state) => state.fav.favorites)
+  let favorites = useSelector((state) => state.fav.favorites) || []
   const dispatch = useDispatch()
 
   const total = 100
@@ -21,23 +22,19 @@ export function Main () {
     const start = perPage * (current - 1) + 1
     const stop = perPage * (current - 1) + perPage
     getPokemons(start, stop)
-    // eslint-disable-next-line
   }, [current])
 
   function getPokemons (start, stop) {
-    const startLoading = new Event('loadingStart')
-    const finishLoading = new Event('loadingFinish')
-
     const length = stop - start + 1
   
-    window.dispatchEvent(startLoading)
+    loading().start()
     return Promise.all(
       Array.from({length}, (_v, i) => 
         getPokemonColor(`https://pokeapi.co/api/v2/pokemon/${start + i}`)
       )
     ).then((res) => {
       setPokemon(res)
-      window.dispatchEvent(finishLoading)
+      loading().finish()
       window.scrollTo({ top: 0, behavior: 'smooth'})
     })
   }
@@ -47,17 +44,25 @@ export function Main () {
     return result.data
   }
 
-  function addFavorite (e, id) {
+  async function addFavorite (e, id) {
     e.stopPropagation()
     if (!localStorage.getItem('token')) {
       openModal()
       return
     }
     if (favorites.includes(id)) {
-      dispatch(removeFav(id))
+      onDeleteFav(id)
     } else {
-      dispatch(addFav(id))
+      onAddFav(id)
     }
+  }
+
+  async function onDeleteFav (id) {
+    dispatch(removeFav({favorites, id}))
+  }
+
+  async function onAddFav (id) {
+    dispatch(addFav({favorites, id}))
   }
 
   function openModal () {

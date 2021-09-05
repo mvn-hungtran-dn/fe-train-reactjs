@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
+import logoGoogle from '../images/logo-google.png';
+
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
 
 export function Login () {
   const [ userName, setUserName ] = useState('')
   const [ password, setPassword ] = useState('')
-  let history = useHistory();
+  let history = useHistory()
+
+  const start = new Event('loadingStart')
+  const finish = new Event('loadingFinish')
+
+  const auth = getAuth()
+  const provider = new GoogleAuthProvider()
 
   function login (e) {
     e.preventDefault()
-    const start = new Event('loadingStart')
-    const finish = new Event('loadingFinish')
-
     window.dispatchEvent(start)
     setTimeout(() => {
       if (password === 'anhyeuem123' && userName === 'hung') {
@@ -20,6 +27,21 @@ export function Login () {
       window.dispatchEvent(finish)
       return
     }, 1000)
+  }
+
+  function loginWithGoogle () {
+    window.dispatchEvent(start)
+    signInWithPopup(auth, provider).then((result) => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // const user = result.user;
+      localStorage.setItem('token', token)
+      // console.log(result.user.uid)
+      localStorage.setItem('userId', result.user.uid)
+      history.push('/')
+    }).finally(() => {
+      window.dispatchEvent(finish)
+    })
   }
 
   return (
@@ -45,7 +67,15 @@ export function Login () {
             type="password"
           />
         </div>
-        <button onClick={login} className="button" type="button">Login</button>
+        <button onClick={login} className="button" type="button">Sign in</button>
+        <div className="pt-2">
+          <button onClick={loginWithGoogle} className="button button-google" type="button">
+            <div className="wrap-img">
+              <img src={logoGoogle} alt=""/>
+            </div>
+            <p className="text p-0">Sign in with Google</p>
+          </button>
+        </div>
       </form>
     </div>
   )

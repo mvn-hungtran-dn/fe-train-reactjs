@@ -2,15 +2,20 @@ import React, { useEffect, useState } from "react";
 
 import logo from '../images/logo-poke.png';
 import { AiOutlineHeart } from 'react-icons/ai';
-import { useSelector } from 'react-redux'
 import {
   Link,
   useLocation
 } from "react-router-dom";
+import { getAuth, signOut } from "firebase/auth";
+import { useSelector, useDispatch } from 'react-redux'
+import { setFav } from "../store/fav";
 
 export function Header () {
   let location = useLocation()
-  let favorites = useSelector((state) => state.fav.favorites)
+  let favorites = useSelector((state) => state.fav.favorites) || []
+  const auth = getAuth()
+
+  const dispatch = useDispatch()
 
   const [isShake, setSake] = useState(false)
   const [isLogin, setLoginState] = useState(!!localStorage.getItem('token'))
@@ -26,6 +31,10 @@ export function Header () {
   }, [favorites])
 
   useEffect(() => {
+    getFav()
+  }, [])
+
+  useEffect(() => {
     if (location.pathname === '/login') {
       setShowHeader(false)
     } else {
@@ -39,7 +48,14 @@ export function Header () {
     }
   }, [location])
 
+  function getFav () {
+    if (!!localStorage.getItem('userId')) {
+      dispatch(setFav())
+    }
+  }
+
   function logout () {
+    signOut(auth)
     localStorage.removeItem('token')
     setLoginState(false)
   }

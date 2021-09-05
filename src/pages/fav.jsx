@@ -9,14 +9,15 @@ export function Fav () {
   const [ pokemons, setPokemon ] = useState([])
   const dispatch = useDispatch()
 
+  const startLoading = new Event('loadingStart')
+  const finishLoading = new Event('loadingFinish')
+
   useEffect(() => {
     getPokemon()
     // eslint-disable-next-line
-  }, [])
+  }, [favorites])
 
   function getPokemon () {
-    const startLoading = new Event('loadingStart')
-    const finishLoading = new Event('loadingFinish')
     window.dispatchEvent(startLoading)
     // eslint-disable-next-line
     return Promise.all(
@@ -35,9 +36,7 @@ export function Fav () {
   }
 
   function onRemoveFav (id) {
-    dispatch(removeFav(id))
-    const poke = pokemons.filter((item) => item.id !== id)
-    setPokemon(poke)
+    dispatch(removeFav({favorites, id}))
   }
 
   return (
