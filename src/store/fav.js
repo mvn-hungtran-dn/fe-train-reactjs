@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { getFirestore } from "firebase/firestore"
-import { doc, updateDoc, getDoc } from "firebase/firestore"; 
+import { doc, updateDoc, getDoc, setDoc } from "firebase/firestore"; 
 import { initializeApp } from 'firebase/app';
 import firebaseConfig from '../utils/firebase';
 import { POKE_DOCS } from '../utils/constants';
@@ -28,7 +28,7 @@ export const removeFav = createAsyncThunk('fav/setFav', async (payload) => {
 
 export const addFav = createAsyncThunk('fav/setFav', async (payload) => {
   const fav = [...payload.favorites, payload.id]
-  await updateDoc(doc(db, localStorage.getItem('userId'), POKE_DOCS.colection), {favotire: fav})
+  await setDoc(doc(db, localStorage.getItem('userId'), POKE_DOCS.colection), {favotire: fav})
   return fav
 })
 
